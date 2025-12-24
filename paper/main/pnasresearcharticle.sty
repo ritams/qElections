@@ -20,17 +20,17 @@
 \additionalelement{%
 \afterpage{\begin{sigstatement}
 \sffamily
-\mdfdefinestyle{pnassigstyle}{backgroundcolor=pnasblueback,linecolor=pnasblueback,fontcolor=pnasbluetext,innertopmargin=9.3pt,innerrightmargin=11.4pt,innerbottommargin=12pt,innerleftmargin=11.4pt,linewidth=0pt,userdefinedwidth=155pt}
+\mdfdefinestyle{pnassigstyle}{backgroundcolor=pnasblueback,linecolor=pnasblueback,fontcolor=pnasbluetext,innertopmargin=9.3pt,innerrightmargin=11.4pt,innerbottommargin=12pt,innerleftmargin=11.4pt,linewidth=0pt,userdefinedwidth=157pt}
 \@ifundefined{@significancestatement}{}{%	
 	\begin{mdframed}[style=pnassigstyle]%
-	\section*{Significance Statement}%
-	\textcolor{black}\@significancestatement
+	\section*{\textcolor{pantone}{Significance}}%
+	\raggedright\fontsize{8.5}{12}\selectfont\textcolor{black}\@significancestatement
 	\end{mdframed}}
 \end{sigstatement}
 
 \begin{sigstatements}
 \sffamily
-\mdfdefinestyle{pnassigstyle}{linewidth=0pt,innertopmargin=0pt,innerrightmargin=0pt,innerbottommargin=-30pt,innerleftmargin=0pt,userdefinedwidth=155pt}
+\mdfdefinestyle{pnassigstyle}{linewidth=0pt,innertopmargin=0pt,innerrightmargin=0pt,innerbottommargin=-30pt,innerleftmargin=0pt,userdefinedwidth=157pt}
 %     \medskip
 \begin{mdframed}[style=pnassigstyle]%
 \scriptsize
@@ -49,5 +49,13 @@
 \end{sigstatements}\clearpage
 }
 }
+
+\renewcommand\normalsize{%
+   \@setfontsize\normalsize\@xpt\@xipt
+   \abovedisplayskip 10\p@ \@plus2\p@ \@minus5\p@
+   \abovedisplayshortskip \z@ \@plus3\p@
+   \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+   \belowdisplayskip \abovedisplayskip
+   \let\@listi\@listI}
 
 \endinput
