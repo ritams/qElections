@@ -15,8 +15,6 @@
 *.snm
 *.vrb
 
-# Generated PDFs (optional, remove if you want to track PDFs)
-*.pdf
 
 .DS_Store
 tmp
