@@ -1,0 +1,19 @@
+# LaTeX intermediate files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lot
+*.lof
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.dvi
+*.nav
+*.snm
+*.vrb
+
+# Generated PDFs (optional, remove if you want to track PDFs)
+*.pdf
