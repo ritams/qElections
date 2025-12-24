@@ -1,0 +1,174 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage[magin=0.5in]{geometry}
+\setcounter{page}{1}
+\renewcommand{\thepage}{S\arabic{page}}
+\setcounter{equation}{0}
+\renewcommand{\theequation}{S\arabic{equation}}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\setcounter{section}{0}
+\renewcommand{\thesection}{S\arabic{section}}
+\setcounter{table}{0}
+\renewcommand{\thetable}{S\arabic{table}}
+
+
+\begin{document}
+
+\onecolumngrid
+\newpage
+\begin{center}
+\textbf{\large Supplemental Material for ``Voter Turnouts Govern Key Electoral Statistics"}
+\end{center}
+% \input{supp-arxiv}
+
+\noindent This Supplemental Material provides further discussion and derivations which support the findings reported in the Letter, and provides details of the models and simulations used to validate the results. 
+
+\tableofcontents
+
+\section{Description of Random Voting Model (RVM)}
+\label{sec:1}
+\noindent In the Random Voting Model, $N$ electoral units are considered, with $n^c_i$ number of candidates contesting to win votes from $T_i$ voters present to cast their votes in the $i$-th electoral unit. Each of the $n^c_i$ candidates is assigned a random weight $w_{ij}$. These weights are drawn independently from a uniform distribution between $0$ and $1$. The corresponding probability $p_{ij}$ of receiving votes is calculated by normalizing these weights. Hence, we have the following,
+\begin{equation}
+    w_{ij} \sim \mathcal{U}(0, 1) \:\text{ and }\: p_{ij} = \frac{w_{ij}}{\sum_{k=1}^3 w_{ik}}; \:\text{ with }\: j = 1, 2\cdots n^c_i.
+    \label{eq:prob-def}
+\end{equation}
+For the rest of the analysis, we focus on a single ($i$-th) electoral unit with voter turnout $T$ and drop the corresponding index $i$ for brevity. Hence,
+\mathtoolsset{centercolon}
+\begin{equation}
+    w_{ij} := w_j\:\text{ and }\:p_{ij} := p_j.
+\end{equation}
+
+\section{Analytical Calculations of Different Election Statistics}
+\noindent For large turnout $(T \gg 1)$, it is reasonable to assume the number of votes received by $j$-th candidate is proportional to their probability $p_j$, in particular, $V_j \approx p_j T$. Hence, for $T \gg 1$, the votes received by the winner  $V_w$ can be approximated as,
+\begin{equation}
+V_w \approx p_{max}T,
+\end{equation}
+and the votes received by the runner-up $V_r$ as,
+\begin{equation}
+V_r \approx p_{2nd\:max}T,
+\end{equation}
+where $p_{max}$ and $p_{2nd \:max}$ correspond to the largest and the second largest probabilities assigned to the candidates. For example, if the number of candidates $n^c = 3$ and the probabilities $p_1, p_2,$ and $p_3$ assigned to those 3 candidates are $0.2, 0.5,$ and $0.3$, then $p_{max} = p_2 = 0.5$ and $p_{2nd \:max} = p_3 = 0.3$. 
+
+\subsection{Order statistics and its connection to winner and runner-up vote share and margins}
+\noindent Consider $n$ \emph{iid} random variables $\{X_1, X_2 \dots X_n\}$ drawn from a distribution $\rho(x)$. When arranged in ascending order, the random variable at the $k$-th spot is defined as the $k$-th order statistics. In particular, $n$-th and $1$-st order statistics correspond to the maximum and minimum of those $n$ random variables, respectively. The $k$-th order statistics of the random variable $X$ is denoted by $X_{(k)}$.\\
+
+\noindent The joint probability density of all the order statistics of the above-mentioned $n$ random variables, $\mathbbm{P}\left(x_{(1)}, x_{(2)}, ... x_{(n)}\right)$, defined as the probability density that the random variable $X_{(k)}$ takes the value $x_{(k)}$ for $k \in \{ 1, 2, \dots, n\}$, is
+\begin{equation}
+    \mathbbm{P}\left(x_{(1)}, x_{(2)}, ... x_{(n)}\right) = n!\prod_{k=1}^{n}\rho\left(x_{(k)}\right).
+\end{equation}
+
+\noindent Now as described in Eq.~\ref{eq:prob-def} the probabilities $p_j$ can be expressed in terms of $w_j$. Hence the winner vote share $v_w = V_w / T$, runner-up vote share $v_r = V_r / T$ and the specific margin $\mu = M / T$ can be expressed in terms of $w$ as the following,
+\begin{center}
+\begin{align}
+    v_w &= \frac{V_w}{T} \approx p_{max} = \frac{w_{max}}{\sum_{k = 1}^{n^c}w_{k}} = \frac{w_{(n^c)}}{\sum_{k = 1}^{n^c}w_{(k)}}\\
+    \label{eq:v_w}
+    v_r &= \frac{V_r}{T} \approx p_{2nd\: max} = \frac{w_{2nd\:max}}{\sum_{k = 1}^{n^c}w_{k}} = \frac{w_{(n^c - 1)}}{\sum_{k = 1}^{n^c}w_{(k)}}\\
+    \label{eq:v_r}
+\end{align}
+\end{center}
+where $w_{(k)}$ is the $k$-th order statistics \cite{BarBalNag2008}.
+\subsection{Random Voting Model with three candidates}
+\noindent In the three-candidate Random Voting Model, we have $n = n^c = 3$ and $p(x) = \mathcal{U}(0, 1)$. Then, the joint probability distribution of all the order statistics is,
+\begin{center}
+    \begin{align}
+        \mathbbm{P}\left(w_{(1)}, w_{(2)}, w_{(3)}\right) = 3! = 6; \text{ with } 0<w_{(1)}<w_{(2)}<w_{(3)}<1,
+    \end{align}
+\end{center}
+and $\mathbbm{P}\left(w_{(1)}, w_{(2)}, w_{(3)}\right) = 0$ otherwise, with the following normalization:
+\begin{equation}
+    \int_{0}^{1}dw_{(3)}\int_{0}^{w_{(3)}}dw_{(2)}\int_{0}^{w_{(2)}} 6 dw_{(1)} = 1.
+\end{equation}
+\subsubsection{Winner vote share distribution}
+\noindent From the joint probability distribution of all the order statistics, we calculate the approximate probability density function of the winner vote share $v_w = V_w / T$ as follows, 
+\begin{center}
+    \begin{align}
+        \nonumber P_{v_w}\left(v_w\right) & = 6 \nonumber \int_{0}^{1}dw_{(3)}\int_{0}^{w_{(3)}}dw_{(2)}\int_{0}^{w_{(2)}} \delta\left(v_w - \frac{w_{(3)}}{w_{(1)} + w_{(2)} + w_{(3)}}\right)dw_{(1)},\\
+        & = 6 \int_{0}^{1}dw_{(3)}\int_{0}^{w_{(3)}} \frac{w_{(3)}}{v_w^2} \nonumber \mathbbm{1}_{0<\frac{w_{(3)} - v_w \left(w_{(2)} + w_{(3)}\right)}{v_w}<w_{(2)}} dw_{(2)},\\
+    \end{align}
+\end{center}
+or,
+\begin{numcases}{P_{v_w} = }
+     6 \int_{0}^{1} w_{(3)}^2\frac{3v_w - 1}{2 v_w^3}dw_{(3)}, \text{ if } \frac{1}{3} < v_w \leq \frac{1}{2}\\
+     6 \int_{0}^{1} w_{(3)}^2\frac{1 - v_w}{2 v_w^3}dw_{(3)}, \text{ if } \frac{1}{2} < v_w \leq 1\\
+     0, \text{ otherwise}.
+\end{numcases}
+
+\noindent Finally, after performing the integral, we get
+\begin{numcases}{P_{v_w} = }
+     \frac{3v_w - 1}{ v_w^3} \text{ if } \frac{1}{3} < v_w \leq \frac{1}{2}\\
+     \frac{1 - v_w}{v_w^3}, \text{ if } \frac{1}{2} < v_w < 1\\
+     0, \text{ otherwise}.
+\end{numcases}
+
+\subsubsection{Runner-up vote share distribution}
+\noindent Similarly, the probability density function of the runner-up vote share $v_r = V_r / T$ can be obtained as follows,
+
+\begin{center}
+    \begin{align}
+        \nonumber P_{v_r}\left(v_w\right) & = 6 \nonumber \int_{0}^{1}dw_{(3)}\int_{0}^{w_{(3)}}dw_{(2)}\int_{0}^{w_{(2)}} \delta\left(v_r - \frac{w_{(2)}}{w_{(1)} + w_{(2)} + w_{(3)}}\right)dw_{(1)},\\
+        & = 6 \int_{0}^{1}dw_{(3)}\int_{0}^{w_{(3)}} \frac{w_{(2)}}{v_r^2} \nonumber \mathbbm{1}_{0< (1 / v_r - 1) w_{(2)} - w_{(3)}< w_{(2)}} dw_{(2)},\\
+    \end{align}
+\end{center}
+or,
+\begin{numcases}{P_{v_r}(v_r) = }
+     6 \int_{0}^{1} w_{(3)}^2\frac{v_r(2-3v_r)}{2 (1 - v_r)^2 (1 - 2v_r)^2}dw_{(3)}, \text{ if } 0 < v_r \leq \frac{1}{3}\\
+     6 \int_{0}^{1} w_{(3)}^2\frac{1 - 2v_r}{2v_r^2 (1 - v_r)^2 }dw_{(3)}, \text{ if } \frac{1}{3} < v_r < \frac{1}{2}\\
+     0, \text{ otherwise}.
+\end{numcases}
+
+\noindent Finally, after performing the integral, we get
+\begin{numcases}{P_{v_r}(v_r) = }
+    \frac{v_r (2 - 3v_r)}{(1 - v_r)^2 (1 - 2v_r)^2} \text{ if } 0 < v_r \leq \frac{1}{3}\\
+     \frac{1 - 2v_r}{v_r^2(1 - v_r)^2}, \text{ if } \frac{1}{3} < v_r < \frac{1}{3}\\
+     0, \text{ otherwise}.
+\end{numcases}
+
+\subsection{Calculating the \emph{scaled} distributions}
+\noindent The winner and runner-up vote shares and specific margins are random variables scaled by the voter turnout $T$. However, through a simple change of variable, $Y = yT$, we can obtain the conditional distributions of the unscaled variables as,
+\begin{equation}
+    \mathcal{P}\left(Y|T\right) = \frac{1}{T}P_y\left(Y / T \right),
+\end{equation}
+where $y$ can be $v_w, v_r$, and $\mu$ and $Y$ represents unscaled variables  $V_w, V_r$, and $M$ respectively. The distribution of $Y$ for an arbitrary turnout distribution $g(T)$ can be obtained as,
+\begin{equation}
+    Q_Y(Y) = \int g(T) ~ \mathcal{P}(Y|T)dT, 
+\end{equation}
+with $\langle Y\rangle$ defined as,
+\begin{equation}
+    \langle Y \rangle = \int Y ~ Q_Y(Y)dY.
+\end{equation}
+\noindent Finally the distribution of \emph{scaled} $Y$, defined as $\widetilde{Y} = Y / \langle Y \rangle$, can be obtained as follows,
+\begin{equation}
+    {Q}_{\widetilde{Y}}(\widetilde{Y}) =  \langle Y \rangle ~ Q_{Y}(\widetilde{Y}  \langle Y \rangle)
+\end{equation}
+\noindent Again, the dummy random variable $Y$ can be either, $V_w$ or  $V_r$.
+
+\section{Simulation Details}
+\noindent The Random Voting Model, $\mathcal{V}{\left(T, n^c\right)}$, with only voter turnouts and number of candidates as an input, can predict the distributions of the winner, runner-up votes, and the margins, when scaled appropriately. For the purpose of this model, the length of the voter turnout array can be assumed to be the total number of electoral units. The model can be simulated by drawing $n^c$ random numbers from a uniform distribution $\mathcal{U}(0, 1)$ for each electoral unit. These random numbers are further normalized using Eq.~\ref{eq:prob-def} to find the probabilities for attracting votes for each candidate. Next, each of the $T_i$ (voter turnout in $i$th electoral unit) electors cast their votes according to the previously calculated probabilities. Finally, all the votes in that unit are counted, and votes received by the winner and the runner-up, along with the margin of victory, are stored. This is repeated for all the electoral units to obtain arrays of the winner votes, runner-up votes, and margins.
+\section{Data Summary}
+\noindent The parliamentary and assembly constituency level data of Indian General elections, along with the assembly constituency level data of the Assembly election, were obtained from the election data repository of Lok Dhaba \cite{lokdhaba}. The polling booth level data for the general elections were collected from the websites of chief electoral officers of different states in India \cite{india_data}. The following table contains the summary of Indian election data.
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Election Type & General Election & General Election & General Election & State Election \\
+\hline  
+Electoral Scale & Parliamentary Constituency & Assembly Constituency & Polling Booth & Assembly Constituency \\
+\hline
+Time Span &  1962-2019& 1999-2019 & 2004-2019 & 1961-2023 \\
+\hline
+Number of Elections &  52 (including bye-elections)& 5 & 4 & 61\\
+\hline
+Average Turnout & 587329& 116577& 583& 86484\\
+\hline
+Average Winner Votes & 286807& 56874& 348& 39884\\
+\hline
+Average Runner-up Votes & 201281& 38887& 159& 28562\\
+\hline
+Average Margin & 85526& 17987& 189& 11322\\
+\hline
+\end{tabular}
+\caption{The table presents typical values of voter turnout and winner votes, runner-up votes, and winning margins across different electoral levels for various types of Indian elections. The available data for the mentioned time spans were consolidated for each country and used to calculate the respective averages. The data for an electoral unit is considered valid if it meets the following criteria:  (a) a complete list of votes received by all candidates was available, (b) at least two candidates contested the election, and (c) the turnout was non-zero.}
+\label{table}
+\end{table}
+\end{document}
