@@ -33,24 +33,23 @@ Elections are central institutions in all the democratic societies. They are reg
 \thispagestyle{firststyle}
 \ifthenelse{\boolean{shortarticle}}{\ifthenelse{\boolean{singlecolumn}}{\abscontentformatted}{\abscontent}}{}
 
-\firstpage{4}[0]  %{paranumber}[lineno]
+\firstpage{4}
+
 
 Free and fair elections play a pivotal role in functioning democracies, ensuring that governing bodies reflect the people’s mandate. Understanding elections from a political, social and quantitative perspective is essential to safeguard their integrity and uncover potential universal patterns that can emerge across different countries and contexts.
 
 In the last three decades, aided by the availability of extensive election data, many studies \cite{CosAlmAnd1999, ForCas2007, mantovani2011scaling, ChaMitFor2013, BokSzaVat2018, hosel2019universality} had identified patterns in the distributions of vote shares garnered by candidates \cite{CalCroAnt2015, BurRanGir2016, MorHisNak2019, Kon2017}, victory margins \cite{jacobson1987marginals, mccann1997threatening, mulligan2003empirical, magrino2011computing, xia2012computing, bhattacharyya2021predicting} and voter turnouts \cite{BorBou2010, BorRayBou2012}. However, these patterns exhibit universality \cite{CosAlmAnd1999, ForCas2007, ChaMitFor2013}, usually limited to some geographical regions or to some types of elections. In this backdrop, a recent work by the authors analyzed a large corpus of election data from 34 countries spanning multiple decades and showed that a suitably scaled distribution of the ratio $M/T$, where $M = V_w - V_r$ is the victory margin and $T$ is the turnout, with $V_w$ and $V_r$ denoting the votes secured by the winner and runner-up, exhibits a robust universality independent of the details of the electoral processes \cite{pal2024universal}. Beyond universality, turnouts play a fundamental role in driving the victory margins. In conjunction with Random Voting Model (RVM), turnouts can accurately predict the scaled distribution of victory margins \cite{pal2024universal}.
 
 These findings naturally raise the question: Does voter turnouts contain information about other key electoral statistics? And can we recover those statistics using RVM? To explore these questions, in this paper, we use empirical election data from 12 countries and RVM to demonstrate that voter turnout distribution $g(T)$ determines two fundamental electoral statistics: the scaled distribution of votes obtained by the winner $Q_1(V_w)$ and the runner-up $Q_2(V_r)$. Remarkably, given the raw data of voter turnouts, it is possible to accurately predict $Q_1(V_w)$ and $Q_2(V_r)$. This prediction holds good at all the electoral scales -- from large parliamentary constituencies ($ \sim 10^5-10^6$ voters) down to the smallest polling booth levels ($\sim 10^2-10^3$ voters). Thus, irrespective of electoral systems and size, we show that voter turnout is a fundamental metric that determines other key electoral statistics, and can help to diagnose the health of elections.
-% This is strengthened by the analytical solution of RVM using an effective number of candidates $n_{\rm eff}$, and the analytical forms for $Q_1(V_w)$ and $Q_2(V_r)$ are in agreement with empirical distributions. 
+
+
+
 \section{Materials and methods}
 
 {\it Framework}: An {\it election} happens at all the $N$ electoral units following the first-post-the-past principle \cite{johnston2007politics}. Let the $i$-th electoral unit (constituency, Congressional District, polling booth etc.) have $c_i$ candidates and $n_i$ voters, where $i=1,2, \dots N$. Usually, only a fraction of the voters cast their votes. This is termed the turnout $T_i \le n_i$, and indicates people's interest in the electoral process. Let $V_{i,1}, V_{i,2}, \dots, V_{i,c_i}$ be the votes secured by $c_i$ candidates such that $\sum_{j=1}^{c_i} V_{i,j}=T_i$. The candidate securing most votes, $V_{w} = {\rm max}(V_{i,1}, V_{i,2}, \dots, V_{i,c_i})$ is declared the winner, and the candidate with the second-highest number of votes, $V_{r}$, is the runner-up.
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=1\linewidth]{winner_vote_data_simulation.pdf}
-    \caption{Scaled distribution of the votes $V_w$ received by the winners for 12 countries. Empirical data (circles) agrees with RVM  simulations (dashed line) obtained using turnout distribution $g(T)$ as input.}
-    \label{fig:1}
-\end{figure}
+\normalcolwidth
+
 
 {\it Model:} The random voting model \cite{pal2024universal}, denoted as RVM($T,c$), is an abstraction of the election framework described above. It takes ($T=\{T_1, T_2, \dots , T_N\}, c=\{c_1, c_2, \dots , c_N\}$) as input. Then, the probability that $j$-th candidate in $i$-th electoral unit attracts electors' votes is:
 \begin{equation}
@@ -73,12 +72,19 @@ This measure reflects how many candidates are meaningfully competitive. If a sin
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=1\linewidth]{runner_up_vote_data_simulation.pdf}
+    \includegraphics[width=1\linewidth]{assets/runner_up_vote_data_simulation.pdf}
     \caption{Scaled distribution of the votes $V_r$ received by the runner-up for 12 countries. Empirical election data (circles) agrees with RVM  simulations (dashed line) obtained using turnout distribution $g(T)$ as input.}
     \label{fig:2}
 \end{figure}
 
 \section{Information embedded in the voter turnouts}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1\linewidth]{assets/winner_vote_data_simulation.pdf}
+    \caption{Scaled distribution of the votes $V_w$ received by the winners for 12 countries. Empirical data (circles) agrees with RVM  simulations (dashed line) obtained using turnout distribution $g(T)$ as input.}
+    \label{fig:1}
+\end{figure}
 Scaled vote distributions for winners and runners-up were examined using national election data from 12 countries, each spanning multiple decades. For each country, we consider the quantity $\langle V_w \rangle\, Q_1(V_w)$ as a function of the scaled winner votes $V_w / \langle V_w \rangle$. Although the resulting curves (circles) in figure \ref{fig:1} vary between countries, the overall structure shows a broad central region with relatively rapid decay in the tails, except in the case of Japan and Germany. We find a similar structure when analyzing the Runner-up votes. The Plots of $\langle V_r \rangle\, Q_2(V_r)$ as a function of $V_r / \langle V_r \rangle$, display analogous shapes as demonstrated in figure \ref{fig:2}. Together, these distributions capture the features of two essential electoral statistics -- the scaled vote distribution of the winners and the runner-ups.
 
 A key insight emerges when these empirical profiles are compared with predictions from the Random Voting Model (RVM). The RVM requires only two empirical inputs: (a) the observed turnout in each electoral unit and (b) the corresponding effective number of candidates $c_i^{\rm eff}$, rounded to the closest integer. No other country-specific assumptions are imposed. Using these inputs, the model generates vote totals for all candidates, from which the winner and runner-up distributions can be constructed. The simulated curves closely mimic the empirical ones for all countries examined. This agreement indicates that turnout statistics encode quantitative information about both $Q_1(V_w)$ and $Q_2(V_r)$, and that this information is rich enough for the RVM to reproduce the observed shapes without additional assumptions about the underlying political processes.
@@ -95,7 +101,7 @@ We further investigate this turnout-driven behavior analytically and derive the 
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.9\linewidth]{combined_winner_runner_india_us.pdf}
+    \includegraphics[width=0.9\linewidth]{assets/combined_winner_runner_india_us.pdf}
     \caption{Scaled distribution of the votes received by the winner and the runner-up. The analytical prediction (solid line) closely agrees with the RVM simulations (dashed line) and the empirical distributions (circles) for India and the USA.}
     \label{fig:3}
 \end{figure}
@@ -112,7 +118,7 @@ quantitative information about (scaled) distribution of votes, $Q_1(V_w)$ and $Q
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.9\linewidth]{india_canada_poll.pdf}
+    \includegraphics[width=0.9\linewidth]{assets/india_canada_poll.pdf}
     \caption{Scaled distribution of the votes received by the winner and the runner-up in polling level data for India and Canada. The empirical data (circles) closely agree with the RVM simulations (dashed line) that takes turnout data as input.}
     \label{fig:4}
 \end{figure}
