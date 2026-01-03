@@ -35,7 +35,7 @@ For the rest of the analytical calculations, we focus on a single ($i$-th) elect
     w_{ij} := w_j\:\text{ and }\:p_{ij} := p_j.
 \end{equation}
 
-\section{Connection to Order Statistics}
+\section{Connection to Order Statistics \cite{orderstat}}
 \noindent For large turnout ($T \gg 1$), it is reasonable to assume the number of votes received by the $j$-th candidate is proportional to their probability $p_j$, specifically, $V_j \approx p_j T$. Hence, the winner's votes $V_w$ and runner-up's votes $V_r$ can be approximated as $V_w \approx p_{max}T$ and $V_r \approx p_{2nd\:max}T$.
 
 \noindent Consider $c$ \emph{iid} random variables $\{w_1, w_2 \dots w_c\}$ drawn from a uniform distribution $\mathcal{U}(0, 1)$. When arranged in ascending order, the random variable at the $k$-th spot is defined as the $k$-th order statistic, denoted by $w_{(k)}$. The joint probability density of all the order statistics is:
@@ -166,14 +166,14 @@ Canada (Poll) & 212.23 & 111.47 & 58.20 & 489534 \\
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\linewidth]{assets/winner_vote_data_simulation_analytical_sm.pdf}
-    \caption{Comparison of analytical winner vote distribution with empirical data and simulations.}
+    \caption{Scaled distribution of the winner votes $V_w$ for 12 countries. Empirical data (circles) is compared with RVM simulations (dashed lines) and analytical predictions assuming $c=3$ candidates (solid lines). The RVM simulations, which use the empirical turnout and effective number of candidates for each electoral unit, closely reproduce the empirical distributions across all countries. The analytical solution provides excellent agreement for countries like India, United States, and Canada, but shows deviations for others (e.g., Denmark, Thailand). These discrepancies may arise because the analytical model assumes a fixed number of candidates ($c=3$), neglecting potential correlations between turnout and the effective number of candidates present in the empirical data.}
     \label{fig:winner_sm}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\linewidth]{assets/runner_up_vote_data_simulation_analytical_sm.pdf}
-    \caption{Comparison of analytical runner-up vote distribution with empirical data and simulations.}
+    \caption{Scaled distribution of the runner-up votes $V_r$ for 12 countries. Circles represent empirical election data, dashed lines show RVM simulation results, and solid lines indicate the analytical prediction derived for $c=3$ candidates. The RVM simulations, which incorporate the actual turnout and effective number of candidates from each electoral unit, accurately predict the empirical distributions in all cases. The analytical curves match well for several countries (e.g., India, United States, Canada), while notable departures appear in others (e.g., Denmark, Thailand). Such deviations can be attributed to the simplifying assumption of a constant $c=3$ in the analytical derivation, which overlooks the inherent correlation between turnout levels and the effective number of competing candidates observed in real elections.}
     \label{fig:runner_up_sm}
 \end{figure}
 
@@ -191,6 +191,9 @@ Election Commission of India. \url{https://www.eci.gov.in}
 Elections Canada. \url{https://www.elections.ca}
 
 
+
+\bibitem{orderstat}
+B.~C. Arnold, N. Balakrishnan, and H.~N. Nagaraja. \emph{A First Course in Order Statistics}. Society for Industrial and Applied Mathematics (2008). \url{https://doi.org/10.1137/1.9780898719062}
 
 \end{thebibliography}
 
